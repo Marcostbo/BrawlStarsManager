@@ -1,11 +1,9 @@
-from sqlalchemy import Boolean, Column, DateTime, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from database import Base, engine
-
 from typing import List
 
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from database import Base, engine
 
 
 class User(Base):

@@ -3,7 +3,8 @@ from datetime import datetime
 from sqlalchemy.orm import Session
 
 import schemas
-from models.users import User, Brawler
+from models.users import Brawler, User
+
 # from models.brawlers import Brawler
 
 
