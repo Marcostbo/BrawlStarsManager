@@ -6,11 +6,17 @@ class UserCreate(BaseModel):
     password: str
 
 
+class FavoriteBrawler(BaseModel):
+    id: int
+    name: str
+
+
 class User(BaseModel):
     id: int
     email: str
     is_active: bool
     is_staff: bool
+    favorite_brawler: FavoriteBrawler
 
     class Config:
         orm_mode = True

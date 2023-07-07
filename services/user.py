@@ -2,12 +2,13 @@ from datetime import datetime
 
 from sqlalchemy.orm import Session
 
-import models
 import schemas
+from models.users import User, Brawler
+# from models.brawlers import Brawler
 
 
 class UserModelService:
-    model = models.User
+    model = User
 
     @classmethod
     def get_user(cls, db: Session, user_id: int):
@@ -26,6 +27,11 @@ class UserModelService:
         fake_hashed_password = user.password + "notreallyhashed"
         db_user = cls.model(email=user.email, hashed_password=fake_hashed_password)
         db_user.registered_on = datetime.now()
+        new_brawler = Brawler(name="Shelly")
+        db.add(new_brawler)
+        db.commit()
+        db.refresh(new_brawler)
+        db_user.favorite_brawler = new_brawler
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
