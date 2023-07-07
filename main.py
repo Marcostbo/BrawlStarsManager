@@ -1,6 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-import service
 import models
 import schemas
 from database import SessionLocal, engine
@@ -28,7 +27,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     )
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
-    return service.create_user(db=db, user=user)
+    return UserModelService.create_user(db=db, user=user)
 
 
 @app.get("/users/", response_model=list[schemas.User])
