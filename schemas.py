@@ -8,6 +8,7 @@ class UserCreate(BaseModel):
 
 class FavoriteBrawler(BaseModel):
     id: int
+    external_id: int
     name: str
 
 

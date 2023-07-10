@@ -26,7 +26,7 @@ class UserModelService:
         fake_hashed_password = user.password + "notreallyhashed"
         db_user = cls.model(email=user.email, hashed_password=fake_hashed_password)
         db_user.registered_on = datetime.now()
-        new_brawler = Brawler(name="Shelly")
+        new_brawler = Brawler(name="Shelly", external_id=16000000)
         db.add(new_brawler)
         db.commit()
         db.refresh(new_brawler)
