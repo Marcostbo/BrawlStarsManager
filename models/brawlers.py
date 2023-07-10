@@ -1,9 +1,9 @@
 from typing import List
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import Mapped, relationship
 
-from database import Base, engine
+from database import Base
 
 
 class Brawler(Base):
@@ -12,6 +12,3 @@ class Brawler(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     users: Mapped[List["User"]] = relationship(back_populates="favorite_brawler")
-
-
-# Base.metadata.create_all(bind=engine)
