@@ -20,12 +20,12 @@ class User(Base):
     favorite_brawler: Mapped["Brawler"] = relationship(back_populates="users")
 
 
-class Brawler(Base):
-    __tablename__ = "brawlers"
+# class Brawler(Base):
+#     __tablename__ = "brawlers"
+#
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String, unique=True, index=True)
+#     users: Mapped[List["User"]] = relationship(back_populates="favorite_brawler")
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    users: Mapped[List["User"]] = relationship(back_populates="favorite_brawler")
 
-
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
